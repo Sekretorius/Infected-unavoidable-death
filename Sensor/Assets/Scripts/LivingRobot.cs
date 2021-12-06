@@ -25,6 +25,10 @@ public class LivingRobot : Robot
     private NearestObject distanceSensorResult;
     private LineSensorData lineSensorResult;
 
+    [SerializeField] private Material deadMaterial;
+    [SerializeField] private GameObject deadParticle;
+    [SerializeField] private Transform boomPlace;
+
     private void Awake()
     {
         if (isInfected) Infect();
@@ -156,8 +160,17 @@ public class LivingRobot : Robot
         }
     }
 
+    private bool dead = false;
     private void Die()
     {
+        if(dead) return;
 
+        dead = true;
+        
+        Material[] mats = gameObject.GetComponent<Renderer>().materials;
+        mats[2] = deadMaterial;
+        gameObject.GetComponent<Renderer>().materials = mats;
+
+        var particle = Instantiate(deadParticle, boomPlace);
     }
 }
