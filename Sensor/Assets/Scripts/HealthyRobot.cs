@@ -8,13 +8,23 @@ public class HealthyRobot : Robot
     private int turnDirection = 1;
 
     private int randomRange = 10;
+
+    private LineSendorSide lastDetectedSide = LineSendorSide.None;
     private void FixedUpdate()
     {
         if (IsLineDetected.IsDetected)
         {
-            turnDirection = IsLineDetected.LineSendorSide == LineSendorSide.Left ? 1 : -1;
+            if (lastDetectedSide == LineSendorSide.None)
+            {
+                lastDetectedSide = IsLineDetected.LineSendorSide;
+                turnDirection = IsLineDetected.LineSendorSide == LineSendorSide.Left ? 1 : -1;
+            }
             Turn(turnDirection);
             return;
+        }
+        else
+        {
+            lastDetectedSide = LineSendorSide.None;
         }
 
 
