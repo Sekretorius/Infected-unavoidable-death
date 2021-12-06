@@ -6,6 +6,7 @@ public enum LineSendorSide { None, Left, Right }
 public class LineSensor : MonoBehaviour
 {
     public LineSendorSide LineSendorSide => lineSendorSide;
+    public float SensorDistance { get => sensorDistance; set => sensorDistance = value; }
 
     [SerializeField] private LayerMask detectionLayer;
     [SerializeField] private float sensorDistance = 5f;

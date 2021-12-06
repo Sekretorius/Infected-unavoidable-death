@@ -4,12 +4,21 @@ using UnityEngine;
 
 public abstract class Robot : MonoBehaviour
 {
+    public List<DistanceSensor> DistanceSensors => distanceSensors;
+    public List<LineSensor> LineSensors => lineSensors;
+    public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
+    public float TurnSpeed { get => turnSpeed; set => turnSpeed = value; }
+
+    [Header("Sensors"), Space()]
     [SerializeField] protected List<DistanceSensor> distanceSensors = new List<DistanceSensor>();
     [SerializeField] protected List<LineSensor> lineSensors = new List<LineSensor>();
+    [SerializeField] protected CommunicationDevice communicationDevice;
 
+    [Header("Robot parameters"), Space()]
     [SerializeField] protected float moveSpeed = 5f;
     [SerializeField] protected float turnSpeed = 5f;
 
+    public CommunicationDevice CommunicationDevice => communicationDevice;
     public struct LineSensorData
     {
         public bool IsDetected { get; set; }
@@ -58,5 +67,9 @@ public abstract class Robot : MonoBehaviour
     protected void Turn(int direction) 
     {
         transform.Rotate(transform.up, turnSpeed * direction * Time.fixedDeltaTime);
+    }
+    protected void Turn(int direction, float speedModifier)
+    {
+        transform.Rotate(transform.up, turnSpeed * speedModifier * direction * Time.fixedDeltaTime);
     }
 }

@@ -17,6 +17,8 @@ public class NearestObject
 
 public class DistanceSensor : MonoBehaviour
 {
+    public float SensorDistance { get => sensorDistance; set => sensorDistance = value; }
+
     [SerializeField] private LayerMask detectionLayer;
     [SerializeField] private float sensorDistance = 5f;
     [SerializeField] private Vector3 sensorDetectionSize;
@@ -27,7 +29,7 @@ public class DistanceSensor : MonoBehaviour
         {
             if (Physics.BoxCast(transform.position, sensorDetectionSize / 2, transform.forward, out RaycastHit hit, transform.rotation, sensorDistance, detectionLayer.value))
             {
-                float hitDistance = Vector2.Dot(transform.forward, hit.point - transform.position) - sensorDetectionSize.z / 2;
+                float hitDistance = (hit.point - transform.position).magnitude;
 
                 return new NearestObject(hitDistance, hit.collider.gameObject);
             }
