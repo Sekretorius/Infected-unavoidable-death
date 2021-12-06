@@ -45,7 +45,7 @@ public class DistanceSensor : MonoBehaviour
         if (Physics.BoxCast(transform.position, sensorDetectionSize / 2, transform.forward, out RaycastHit hit, transform.rotation, sensorDistance, detectionLayer.value))
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(hit.point, 1f);
+            Gizmos.DrawWireSphere(hit.point, 0.5f);
             Gizmos.DrawLine(transform.position, hit.point);
         }
     }
