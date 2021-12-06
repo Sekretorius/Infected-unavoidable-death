@@ -13,9 +13,12 @@ public class LivingRobot : Robot
     private readonly float AvoidDistance = 1.5f;
     private readonly float MaxFallowTurnDifference = 10f;
     private readonly float InfectedTurnSpeedModifier = 1.2f;
+    private readonly float InfectedLivespan = 10f;
 
     private bool isTurning = false;
     private int turnDirection = 1;
+    private float infectedTime = 0;
+
     private LineSendorSide lastDetectedSide = LineSendorSide.None;
     private System.Action robotBehavior;
 
@@ -68,6 +71,14 @@ public class LivingRobot : Robot
 
     public void InfectedRobotBehavior()
     {
+        if(infectedTime > InfectedLivespan)
+        {
+            Die();
+            return;
+        }
+
+        infectedTime += Time.fixedDeltaTime;
+
         if (HandleLineDetection()) return;
         
         if (distanceSensorResult.DetectedObject != null && distanceSensorResult.DetectedObject.TryGetComponent(out LivingRobot livingRobot))
@@ -143,5 +154,10 @@ public class LivingRobot : Robot
             }
             Move(transform.forward);
         }
+    }
+
+    private void Die()
+    {
+
     }
 }
