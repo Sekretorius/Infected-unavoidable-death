@@ -27,7 +27,7 @@ public class LivingRobot : Robot
         if (isInfected) Infect();
         else
         {
-            healthyRobotData.SetValues(this);
+            //healthyRobotData.SetValues(this);
             robotBehavior = HealthyRobotBehavior;
         }
 

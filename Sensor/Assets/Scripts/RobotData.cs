@@ -26,7 +26,9 @@ public class RobotData : ScriptableObject
         robot.LineSensors.ForEach(x => x.SensorDistance = ObjectSensorDistance);
         if(robot.TryGetComponent(out MeshRenderer meshRenderer))
         {
-            meshRenderer.material = material; //change this if not needed...
+            var tempMat = meshRenderer.materials;
+            tempMat[2]  = material;
+            meshRenderer.materials = tempMat;
         }
     }
 }
