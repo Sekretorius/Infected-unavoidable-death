@@ -10,7 +10,7 @@ public class LivingRobot : Robot
     [SerializeField] private bool isInfected = false;
     
     private readonly float InfectDistance = 0.75f;
-    private readonly float AvoidDistance = 0.5f;
+    private readonly float AvoidDistance = 0.75f;
     private readonly float MaxFallowTurnDifference = 10f;
     private readonly float InfectedTurnSpeedModifier = 1.2f;
     private readonly float InfectedLivespan = 10f;

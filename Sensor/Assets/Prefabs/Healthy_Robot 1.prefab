@@ -378,7 +378,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 65
   sensorDistance: 2
-  sensorDetectionSize: {x: 1.5, y: 1, z: 1}
+  sensorDetectionSize: {x: 1, y: 0.05, z: 0.05}
 --- !u!1 &7641635855512374781
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,7 +440,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 65
   sensorDistance: 2
-  sensorDetectionSize: {x: 1.5, y: 1, z: 1}
+  sensorDetectionSize: {x: 1, y: 0.05, z: 0.05}
 --- !u!1 &7641635855625795811
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +502,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 65
   sensorDistance: 2
-  sensorDetectionSize: {x: 1.5, y: 1, z: 1}
+  sensorDetectionSize: {x: 1, y: 0.05, z: 0.05}
 --- !u!1 &7641635855856753252
 GameObject:
   m_ObjectHideFlags: 0
