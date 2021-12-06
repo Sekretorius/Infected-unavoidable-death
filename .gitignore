@@ -58,3 +58,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Sensor/Library/Artifacts
+Sensor/Library
+Sensor/Logs
+Sensor/Temp
+Sensor/obj
