@@ -17,28 +17,21 @@ public class NearestObject
 
 public class DistanceSensor : MonoBehaviour
 {
-    public delegate void Detect(NearestObject detectedObject);
-    public event Detect OnDetection;
-    public NearestObject DetectedObject { get => detectedObject; set => detectedObject = value; }
-    
-    private NearestObject detectedObject; 
-
     [SerializeField] private LayerMask detectionLayer;
     [SerializeField] private float sensorDistance = 5f;
     [SerializeField] private Vector3 sensorDetectionSize;
 
-    private void FixedUpdate()
+    public NearestObject DetectedObject
     {
-        if(Physics.BoxCast(transform.position, sensorDetectionSize / 2, transform.forward, out RaycastHit hit, transform.rotation, sensorDistance, detectionLayer.value)) 
+        get
         {
-            float hitDistance = Vector2.Dot(transform.forward, hit.point - transform.position) - sensorDetectionSize.z / 2;
-            detectedObject = new NearestObject(hitDistance, hit.collider.gameObject);
+            if (Physics.BoxCast(transform.position, sensorDetectionSize / 2, transform.forward, out RaycastHit hit, transform.rotation, sensorDistance, detectionLayer.value))
+            {
+                float hitDistance = Vector2.Dot(transform.forward, hit.point - transform.position) - sensorDetectionSize.z / 2;
 
-            OnDetection?.Invoke(detectedObject);
-        }
-        else
-        {
-            detectedObject = null;
+                return new NearestObject(hitDistance, hit.collider.gameObject);
+            }
+            return null;
         }
     }
 
