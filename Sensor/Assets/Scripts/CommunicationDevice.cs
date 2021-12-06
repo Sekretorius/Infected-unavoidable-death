@@ -33,8 +33,8 @@ public class CommunicationDevice : MonoBehaviour
         drawTimeCounter += 0.025f;
 
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(lastSender.transform.position, 1);
+        Gizmos.DrawWireSphere(lastSender.transform.position, 0.5f);
         Gizmos.DrawLine(lastSender.transform.position, lastReceiver.transform.position);
-        Gizmos.DrawWireSphere(lastReceiver.transform.position, 1);
+        Gizmos.DrawWireSphere(lastReceiver.transform.position, 0.5f);
     }
 }

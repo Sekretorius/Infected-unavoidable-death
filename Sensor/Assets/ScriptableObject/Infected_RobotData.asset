@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030c7a5a77c79d742bbc688d4c33ee5b, type: 3}
   m_Name: Infected_RobotData
   m_EditorClassIdentifier: 
-  moveSpeed: 9
+  moveSpeed: 3.5
   turnSpeed: 120
   objectSensorDistance: 5
   lineSensorDistance: 1

@@ -9,8 +9,8 @@ public class LivingRobot : Robot
 
     [SerializeField] private bool isInfected = false;
     
-    private readonly float InfectDistance = 1.5f;
-    private readonly float AvoidDistance = 1.5f;
+    private readonly float InfectDistance = 0.75f;
+    private readonly float AvoidDistance = 0.5f;
     private readonly float MaxFallowTurnDifference = 10f;
     private readonly float InfectedTurnSpeedModifier = 1.2f;
     private readonly float InfectedLivespan = 10f;
@@ -30,7 +30,7 @@ public class LivingRobot : Robot
         if (isInfected) Infect();
         else
         {
-            //healthyRobotData.SetValues(this);
+            healthyRobotData.SetValues(this, false);
             robotBehavior = HealthyRobotBehavior;
         }
 

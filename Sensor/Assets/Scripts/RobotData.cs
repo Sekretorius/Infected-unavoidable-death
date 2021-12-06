@@ -17,14 +17,16 @@ public class RobotData : ScriptableObject
     [SerializeField] private Material material;
 
 
-    public void SetValues(Robot robot)
+    public void SetValues(Robot robot, bool changeMat = true)
     {
         robot.MoveSpeed = moveSpeed;
         robot.TurnSpeed = turnSpeed;
 
         robot.DistanceSensors.ForEach(x => x.SensorDistance = ObjectSensorDistance);
         robot.LineSensors.ForEach(x => x.SensorDistance = ObjectSensorDistance);
-        if(robot.TryGetComponent(out MeshRenderer meshRenderer))
+
+
+        if(changeMat && robot.TryGetComponent(out MeshRenderer meshRenderer))
         {
             var tempMat = meshRenderer.materials;
             tempMat[2]  = material;

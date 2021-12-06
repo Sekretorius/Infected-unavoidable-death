@@ -26,7 +26,7 @@ public class LineSensor : MonoBehaviour
         if(Physics.Raycast(transform.position, transform.forward, out RaycastHit raycastHit, sensorDistance, detectionLayer.value))
         {
             Gizmos.color = Color.yellow;
-            Gizmos.DrawCube(raycastHit.point, Vector3.one);
+            Gizmos.DrawCube(raycastHit.point, Vector3.one / 2);
         }
     }
 }
